@@ -1,0 +1,127 @@
+Assignment 2
+
+
+Question 1 : 
+
+
+-a
+
+we have a global variable x set to 1, then we have an arrow function named foo that assigns 2  to x . This function foo returns an inner function that will return x in the consol. 
+After, the foo function  is called with the x =2  and the inner function return is called and x still 2  and after we print in the console x that is 2 . 
+This concept it is call closure that the inner function can access the outer function( parent) scope even after the function is done. 
+
+Output: 
+
+2
+2
+
+
+-b
+
+we declare with var 2 arrays named items that contain 1,2,3 and another one named result that is empty. 
+Then we have a for loop with i using var initialized to 0 this loop will run 3 time 0,1,2. Using var here mean using the same i. 
+At every iteration a function is created and will push into result an array with the item of index i ( remember i is the same all the time). 
+so, the loop will run normally so item[0] now i =0, item[1] now i =1and item[2] now i =2 and we increment to 1 one last time before the loop stop now i = 3 
+then when printing in the console we map through each function in result and it will create a new array with those information. 
+so, because we used var i is equal to 3, so we try to access to items[3] and that does not exist, items stop at index 2. 
+So, it will do that 3 times and will return undefined. 
+
+Output: 
+
+[ undefined, undefined, undefined] 
+
+
+-c
+
+But if it was let instead var will mean that each iteration in the for loop will have been independent  therefore we will get item[1]  now i=1, item[2] now i=2, item[3] now i=3.
+And the output will be [1, 2, 3]
+
+-d
+
+here, the loop will run 3 times i is using var , but in this case the outer function is directly called using the current i, then it creates another function that will have item[x] in another word item[i]. this is because the direct invocation of i. 
+so, the loop run 3 time and will store in result 3 functions  with item[0], item[1], item[2]. 
+Then we will map through result that will give us the return value of each function that will be stored in a new array. 
+
+Output: 
+
+[1,2,3]
+
+
+Question 3: 
+
+-a
+
+here we have 2 functions using promise that is asynchronous so the code will continue its course normally. 
+The difference in those 2 functions is the setTimeout that is different. The resolveAfter2Seconds will have to wait 2 seconds after the promise is resolved and the other function resolveAfter1second will have to wait 1 second. 
+
+So, first it prints in the console starting slow promise and then starting fast promise and then done follow the course of function calls. 
+But then the second function that was called that is resolveAfter1Second is printing fast promise is done after 1second that the promise was resolved with the value fast. And then the other one is resolved with the value slow and 2 seconds after the promise of resolovedAfter2Seconds, it prints slow promise is done.
+
+
+Output: 
+
+Starting slow promise
+Starting fast promise 
+Done 
+Fast promise is done 
+Slow promise is done 
+
+-b
+
+If it is resolveAfter2Second2 it will not work because this function does not exist. 
+
+If it is resolveAfter2Seconds: 
+
+It will go in the function call order first it will print Starting fast promise then starting slow promise and done. 
+But then the first function that was called that is resolveAfter1Second is printing fast promise is done after 1second that the promise was resolved with the value fast.
+And then the other one is resolved with the value slow and 2 seconds after the promise of resolovedAfter2Seconds, it prints slow promise is done.
+
+Output: 
+
+Starting fast promise
+Starting slow promise 
+Done 
+Fast promise is done 
+Slow promise is done 
+
+-c
+
+In this code, the different is when the function are called, before resolveAfter 2Seconds function is called there is the key word await. This mean it will wait for this function to be done with the promise before moving down. 
+So first it prints starting slow promise and after 2 seconde the promise is resolved, and it prints slow promise is done. 
+Then it goes to the next line where the resolveAfter1second is called and prints starting fast promise. 
+Here we don’t have any await so we go to the next line, and it prints done! And then after 1 second the promise is resolved and it prints fast promise is done 
+
+Output:
+
+Starting slow promise
+Slow promise is done 
+Starting fast promise
+Done!
+Fast promise is done 
+
+
+Question 3: 
+
+-a
+
+It starts by printing == starting == to the console. 
+Then the function rejectAfter2seconds is called, it will print starting slow promise and will start the promise and then the rejectAfter1Second will be called it will print starting fast promise and will start the promise. 
+Then both promises will be rejected but they will be but at different time due to the setTimeout, for handle the rejection we used a try catch , it the try it wait for the promise to be rejected in the rejectedAfter1Second function after 1 seconde then in the catch it prints it broke! Fast. 
+Then, it the try it wait for the promise to be rejected in the rejectedAfter2Seconds function after 2 seconds then in the catch it prints it broke! Slow. And it prints done 
+
+Output : 
+
+== starting == 
+Starting slow promise
+Starting fast promise
+It broke! Fast
+It broke!slow
+== done ==
+
+-b
+
+here it starts the same we have the same functions , so it prints the same first 3 lines 
+== starting == , starting slow and starting fast. 
+But the difference is at the handling of the rejection in the try catch is different. 
+it then  waits for the promise to be rejected in the rejectedAfter1Second function after 1 second then in the catch it prints it broke! Fast. 
+but because the second promise is inside the same try, it is never reach because the away fast made us got out of the try block to go to the catch block. 
